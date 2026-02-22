@@ -12,7 +12,7 @@ namespace UniBet.Controllers
         private readonly IUserService _service;
         public UserController(IUserService service)
         {
-             _service = service;
+            _service = service;
         }
 
         [HttpGet("GetUserData")]
@@ -23,20 +23,20 @@ namespace UniBet.Controllers
         }
 
         [HttpPost("Deposit")]
-        public IActionResult Deposit([FromBody] DepositDTO deposit) 
+        public IActionResult Deposit([FromBody] DepositDTO deposit)
         {
             try
             {
                 _service.Deposit(deposit);
                 return Created();
-            } 
+            }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
-        [HttpPut("Edit")
+        [HttpPut("Edit")]
         public IActionResult GetUserData([FromQuery] int Id, [FromBody] DepositDTO deposit) 
         {
             User userRespose = _service.GetUserData(Id);
